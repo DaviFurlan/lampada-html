@@ -1,3 +1,88 @@
-.body {
-    background-color: black;
+```
+:root {
+    --bg: #0f1724;
+  --accent: #10b981; /* verde ligar */
+  --danger: #ef4444;  /* vermelho desligar */
+  --text: #e6eef8;
 }
+
+* { box-sizing: border-box; margin:0; padding:0 }
+html, body { height: 100%; font-family: Inter, system-ui, sans-serif; display:flex; align-items:center; justify-content:center; background: var(--bg); color: var(--text); }
+
+.card {
+  width: 320px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 36px 24px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+/* Checkbox oculto */
+#lampada { display: none; }
+
+/* Emoji */
+.emoji {
+  display: inline-block;
+  font-size: 80px;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+
+/* Emoji apagado */
+.emoji::after {
+  content: "⚫";
+}
+
+/* Emoji aceso */
+#lampada:checked + .emoji::after {
+  content: "🟡";
+  color: #fff700;
+  text-shadow:
+    0 0 10px #ffff00,
+    0 0 20px #ffd700,
+    0 0 30px #ffae00,
+    0 0 40px #ff8c00,
+    0 0 50px #ff7a00;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+/* Botão único */
+.btn-toggle {
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  color: var(--text);
+  text-align: center;
+  transition: all 0.3s ease;
+  background: var(--accent);
+}
+
+/* Texto do botão usando pseudo-elemento */
+.btn-toggle::after {
+  content: "Ligar";
+}
+
+/* Quando lâmpada está acesa */
+#lampada:checked ~ .buttons .btn-toggle {
+  background: var(--danger);
+}
+
+#lampada:checked ~ .buttons .btn-toggle::after {
+  content: "Desligar";
+}
+
+/* Efeito ao clicar */
+.btn-toggle:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+}
+```
